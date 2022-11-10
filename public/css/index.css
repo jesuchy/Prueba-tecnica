@@ -1,0 +1,130 @@
+:root {
+  --red: red;
+  --backgroup_01: #343a40;
+  --backgroup_02: #454d55;
+  --gray_01: #212529;
+  --gray_02: #869099;
+  --white: #fff;
+  --color: #fff;
+  --blanco_01: rgba(255, 255, 255, 0.8);
+  --blanco-02: #dee2e6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--gray_01);
+  text-align: left;
+  background-color: var(--backgroup_02);
+  color: var(--color);
+}
+
+nav {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 250px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1037;
+  background-color: var(--backgroup_01);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+}
+
+aside {
+  bottom: 0;
+  float: none;
+  left: 0;
+  position: fixed;
+  top: 0;
+  display: block;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
+  height: 100vh;
+  overflow-y: hidden;
+  z-index: 1038;
+  background-color: var(--backgroup_01);
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  width: 250px;
+}
+
+footer {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 250px;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1032;
+  background-color: var(--backgroup_01);
+  border-top: 1px solid var(--blanco-02);
+  color: var(--gray_02);
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contenido {
+  min-height: 711px;
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 250px;
+  margin-top: calc(3.5rem + 1px);
+  padding-bottom: calc(3.5rem + 1px);
+  background-color: var(--backgroup_01);
+  background-color: var(--backgroup_02);
+  min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px));
+}
+
+/* Codigo para los INPUTS */
+/* Debe llevar la siguiente jerarquia */
+/* <.cajaInputs>
+    <label>
+    <input> */
+
+.cajaInputs {
+  position: relative;
+}
+
+.cajaInputs input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.cajaInputs label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.cajaInputs input:focus ~ label,
+.cajaInputs input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
