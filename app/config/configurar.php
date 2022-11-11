@@ -33,5 +33,5 @@ define('WR_DEBUG', false);
 /////////////////////////////////////
 // Datos del Sitio
 /////////////////////////////////////
-define('NAME_SEE', $Config['application']['name']);
+define('NAME_PROYECTO', $Config['application']['name']);
 define('VERSION_SEE', $Config['application']['version']);

@@ -1,12 +1,3 @@
-.contenido {
-  margin-left: 0;
-  margin-top: 0;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(#141e30, #243b55) !important;
-}
 
 html {
   height: 100%;
@@ -109,12 +100,12 @@ body {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
+  position: absolute;
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
     0 0 100px #03e9f4;
 }
 
 .login-box a span {
-  position: absolute;
   display: block;
 }
 
@@ -280,12 +271,12 @@ body {
   transition: all 375ms ease-in-out;
 }
 .cont_select_int li {
-  position: relative;
   float: left;
   width: 100%;
   border-bottom: 1px solid #e0e0e0;
   background-color: transparent;
   list-style-type: none;
+  position: relative;
   padding: 10px 2%;
   margin: 0px;
 
