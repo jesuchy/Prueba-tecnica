@@ -7,52 +7,54 @@
 
 <div class="contenido">
     <div class="ConTable">
-        <div class="Nab">
-            <div class="Agragar Boton">
-                <button id="BtnAgregar" class="raise">Agregar</button>
-            </div>
-            <div class="ContenedorInput">
-                <input type="text" name="" required="" id="">
-                <label>Buscar</label>
-            </div>
+        <div class="table-responsive">
+            <div class="Nab">
+                <div class="Agragar Boton">
+                    <button id="BtnAgregar" class="raise">Agregar</button>
+                </div>
+                <div class="ContenedorInput">
+                    <input type="text" name="" required="" id="buscador">
+                    <label>Buscar</label>
+                </div>
 
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Tipo Vehiculo</th>
-                    <th scope="col">Numero Puertas</th>
-                    <th scope="col">Placa</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="RefrescarTabla">
-                <?php $i = 0;
-                foreach ($datos['Vehiculo'] as $dato) : ?>
+            </div>
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row"><?php echo $i++ ?></th>
-                        <td><?php echo $dato->Marca ?></td>
-                        <td><?php echo $dato->Modelo ?></td>
-                        <td><?php echo $dato->TipoVehiculo ?></td>
-                        <td><?php echo $dato->NumeroPuertas ?></td>
-                        <td><?php echo $dato->Placa ?></td>
-                        <td>
-                            <div class='CajaBotones'>
-                                <button onclick="ModalEditar('<?php echo $dato->IdPersona ?>')">
-                                    <i class='bi bi-pencil'></i>
-                                </button>
-                                <button onclick="Eliminar('<?php echo $dato->IdPersona ?>')">
-                                    <i class='bi bi-trash'></i>
-                                </button>
-                            </div>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Tipo Vehiculo</th>
+                        <th scope="col">Numero Puertas</th>
+                        <th scope="col">Placa</th>
+                        <th scope="col">Acciones</th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody id="RefrescarTabla">
+                    <?php $i = 0;
+                    foreach ($datos['Vehiculo'] as $dato) : ?>
+                        <tr>
+                            <th scope="row"><?php echo $i++ ?></th>
+                            <td><?php echo $dato->Marca ?></td>
+                            <td><?php echo $dato->Modelo ?></td>
+                            <td><?php echo $dato->TipoVehiculo ?></td>
+                            <td><?php echo $dato->NumeroPuertas ?></td>
+                            <td><?php echo $dato->Placa ?></td>
+                            <td>
+                                <div class='CajaBotones'>
+                                    <button onclick="ModalEditar('<?php echo $dato->Id ?>')">
+                                        <i class='bi bi-pencil'></i>
+                                    </button>
+                                    <button onclick="Eliminar('<?php echo $dato->Id ?>')">
+                                        <i class='bi bi-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -68,29 +70,33 @@
             </div>
             <div class="modal-body">
                 <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="Marca_01">
+                    <input type="text" name="" required id="Marca_01" minlength="4" maxlength="20">
                     <label>Marca</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="Modelo_01">
+                    <input type="text" name="" required="" id="Modelo_01" maxlength="20">
                     <label>Modelo</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="TipoVehiculo_01">
+                    <input type="text" name="" required="" id="TipoVehiculo_01" maxlength="20">
                     <label>Tipo de vehiculo</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" required="" id="Placa_01">
+                    <input type="text" required="" id="Placa_01" maxlength="7">
                     <label>Placa</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" required="" class="input-number" id="NumeroPuertas_01">
+                    <input type="text" required="" class="input-number" id="NumeroPuertas_01" maxlength="2">
                     <label>Numero de puertas</label>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="CerrarModal('#AgregarVehiculo')" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="sutmit" class="btn btn-info" id="BtnRegistrar">Agregar</button>
+                <button type="sutmit" class="btn btn-info Submit" id="BtnRegistrar">Agregar</button>
+                <button class="btn btn-primary Cargando" type="button" disabled>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    cargando...
+                </button>
             </div>
         </div>
     </div>
@@ -99,76 +105,42 @@
 
 <!-- Modal Editar Persona -->
 
-<div class="modal fade " id="EditarPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="EditarVehiulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog TemaOcuro" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel" aria-hidden="false">Editar Persona </h5>
             </div>
             <div class="modal-body">
-                <input type="text" id="IdPersona_02" style="display: none;">
                 <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="Nombre_02">
-                    <label>Nombres</label>
-                </div>
-                <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="Apellido_02">
-                    <label>Apellidos</label>
-                </div>
-                <div class="ContenedorInputFecha">
-                    <input type="date" name="" required="" id="FechaNacimiento_02">
-                    <label>Fecha nacimiento</label>
+                    <input type="text" name="" required="" id="Marca_02">
+                    <input type="text" name="" required="" id="Id" style="display: none;" maxlength="20">
+                    <label>Marca</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" class="input-number" required="" id="Documento_02">
-                    <label>Identificacion</label>
+                    <input type="text" name="" required="" id="Modelo_02" maxlength="20">
+                    <label>Modelo</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input type="text" name="" required="" id="Profesion_02">
-                    <label>Profesión</label>
-                </div>
-                <div class="cont_select_center">
-                    <div class="select_mate" data-mate-select="active">
-                        <select id="Casaso_02" onchange="" onclick="return false;">
-                            <option value="">Casado? </option>
-                            <option value="0">NO</option>
-                            <option value="1">SI</option>
-                        </select>
-                        <p class="selecionado_opcion" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
-                                <path d="M0-.75h24v24H0z" fill="none" />
-                            </svg></span>
-                        <div class="cont_list_select_mate">
-                            <ul class="cont_select_int"> </ul>
-                        </div>
-                    </div>
+                    <input type="text" name="" required="" id="TipoVehiculo_02" maxlength="20">
+                    <label>Tipo de vehiculo</label>
                 </div>
                 <div class="ContenedorInput">
-                    <input asp-for="Rate" type="hidden" id="valorreal_02" asp-for="Rate" />
-                    <input type="text" class="input-number input-mascara" id="IngresosMensuales_02" required="">
-                    <label>Ingresos mensuales </label>
+                    <input type="text" required="" id="Placa_02" maxlength="7">
+                    <label>Placa</label>
                 </div>
-                <div class="cont_select_center">
-                    <div class="select_mate" data-mate-select="active">
-                        <select id="Vehiculo_02" onchange="" onclick="return false;" id="TipoDocumento">
-                            <option value="">Seleccione su nuevo Vehiculo </option>
-                            <?php foreach ($datos['vehiculoModel'] as $dato) : ?>
-                                <option value="<?php echo $dato->Id; ?>"><?php echo $dato->Modelo; ?></option>
-                            <?php endforeach ?>
-                        </select>
-                        <p class="selecionado_opcion" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
-                                <path d="M0-.75h24v24H0z" fill="none" />
-                            </svg></span>
-                        <div class="cont_list_select_mate">
-                            <ul class="cont_select_int"> </ul>
-                        </div>
-                    </div>
+                <div class="ContenedorInput">
+                    <input type="text" required="" class="input-number" id="NumeroPuertas_02" maxlength="2">
+                    <label>Numero de puertas</label>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="CerrarModal('#EditarPersona')" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="sutmit" class="btn btn-info" id="BtnActualizar">Actualizar</button>
+                <button type="button" onclick="CerrarModal('#EditarVehiulo')" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="sutmit" class="btn btn-info Submit" id="BtnActualizar">Actualizar</button>
+                <button class="btn btn-primary Cargando" type="button" disabled>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    cargando...
+                </button>
             </div>
         </div>
     </div>
@@ -193,13 +165,14 @@
     // Click de envio, para el regitro de persona 
 
     $("#BtnRegistrar").click(function() {
+        
         var Marca = $('#Marca_01').val();
         var Modelo = $('#Modelo_01').val();
         var TipoVehiculo = $('#TipoVehiculo_01').val();
         var Placa = $('#Placa_01').val();
         var NumeroPuertas = $('#NumeroPuertas_01').val();
 
-        if (Marca == "" || Modelo == "" || TipoVehiculo == "" || Placa == "" || NumeroPuertas == "" ) {
+        if (Marca == "" || Modelo == "" || TipoVehiculo == "" || Placa == "" || NumeroPuertas == "") {
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
@@ -209,6 +182,7 @@
             });
 
         } else {
+            MostrarCarga();
             $.ajax({
                 url: '<?php echo RUTA_URL ?>/Vehiculo/RegistrarVehiculo',
                 type: 'POST',
@@ -228,13 +202,13 @@
                     showConfirmButton: false,
                     timer: 3000
                 });
-
                 $('#Marca_01').val("");
                 $('#Modelo_01').val("");
                 $('#TipoVehiculo_01').val("");
                 $('#Placa_01').val("");
                 $('#NumeroPuertas_01').val("");
                 RefrecarTabla();
+                OcultarCarga();
             }).fail(function() {
                 Swal.fire({
                     position: 'center',
@@ -243,51 +217,54 @@
                     showConfirmButton: false,
                     timer: 3000
                 });
+                OcultarCarga();
             })
         }
     });
 
+    // Boton GLobal de Cargar 
+    $(".Cargando").hide();
+
+    function MostrarCarga(){
+        $(".Cargando").show();
+        $(".Submit").hide();
+    }
+
+    function OcultarCarga(){
+        $(".Cargando").hide();
+        $(".Submit").show();
+    }
+
     // Funcion que abre modal para editar 
     function ModalEditar(id) {
-        $("#EditarPersona").modal("show");
-        console.log(id);
+        $("#EditarVehiulo").modal("show");
         $.ajax({
-            url: '<?php echo RUTA_URL ?>/Personal/SeleccionarPersonasId',
+            url: '<?php echo RUTA_URL ?>/Vehiculo/SeleccionarVehiculoId',
             type: 'POST',
             data: {
                 id: id
             }
         }).done(function(resp) {
             var data = JSON.parse(resp);
-            console.log(data);
-            $("#IdPersona_02").val(data.IdPersona)
-            $('#Nombre_02').val(data.Nombres);
-            $('#Apellido_02').val(data['Apellidos']);
-            $('#FechaNacimiento_02').val(data['FechaNacimiento']);
-            $('#Documento_02').val(data['Identificacion']);
-            $('#Profesion_02').val(data['Profesion']);
-            $('#Casaso_02').val(data['Casado']);
-            $('#valorreal_02').val(data['IngresosMensuales']);
-            $('#IngresosMensuales_02').val(data['IngresosMensuales']);
-            $('#Vehiculo_02').val(data['IdVehiculo']);
-
+            $("#Id").val(data.Id)
+            $("#Marca_02").val(data.Marca)
+            $('#Modelo_02').val(data.Modelo);
+            $('#TipoVehiculo_02').val(data['TipoVehiculo']);
+            $('#Placa_02').val(data['Placa']);
+            $('#NumeroPuertas_02').val(data['NumeroPuertas']);
         })
     }
 
     // Click para enviar registro modificado 
     $("#BtnActualizar").click(function() {
-        var id = $("#IdPersona_02").val();
-        var Nombre = $('#Nombre_02').val();
-        var Apellido = $('#Apellido_02').val();
-        var FechaNacimiento = $('#FechaNacimiento_02').val();
-        var Documento = $('#Documento_02').val();
-        var Profesion = $('#Profesion_02').val();
-        var Casado = $('#Casaso_02').val();
-        var IngresosMensuales = $('#valorreal_02').val();
-        var Vehiculo = $('#Vehiculo_02').val();
+        var id = $('#Id').val();
+        var Marca = $('#Marca_02').val();
+        var Modelo = $('#Modelo_02').val();
+        var TipoVehiculo = $('#TipoVehiculo_02').val();
+        var Placa = $('#Placa_02').val();
+        var NumeroPuertas = $('#NumeroPuertas_02').val();
 
-        console.log(id + "-" + Nombre + "-" + Apellido + "-" + FechaNacimiento + "-" + Documento + "-" + Profesion + "->" + Casado + "<- ->" + IngresosMensuales + "<- ->" + Vehiculo + "<-");
-        if (Nombre == "" || Apellido == "" || FechaNacimiento == "" || Documento == "" || Profesion == "" || Casado == "" || IngresosMensuales == "" || Vehiculo == "") {
+        if (Marca == "" || Modelo == "" || TipoVehiculo == "" || Placa == "" || NumeroPuertas == "") {
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
@@ -295,24 +272,21 @@
                 showConfirmButton: false,
                 timer: 3000
             });
-
         } else {
+            MostrarCarga();
             $.ajax({
-                url: '<?php echo RUTA_URL ?>/Personal/EditarPersona',
+                url: '<?php echo RUTA_URL ?>/Vehiculo/EditarVehiulo',
                 type: 'POST',
                 data: {
                     id: id,
-                    Nombre: Nombre,
-                    Apellido: Apellido,
-                    FechaNacimiento: FechaNacimiento,
-                    Documento: Documento,
-                    Profesion: Profesion,
-                    Casado: Casado,
-                    IngresosMensuales: IngresosMensuales,
-                    Vehiculo: Vehiculo
+                    Marca: Marca,
+                    Modelo: Modelo,
+                    TipoVehiculo: TipoVehiculo,
+                    Placa: Placa,
+                    NumeroPuertas: NumeroPuertas
                 }
             }).done(function() {
-                $("#EditarPersona").modal("hide");
+                $("#EditarVehiulo").modal("hide");
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -321,6 +295,7 @@
                     timer: 3000
                 });
                 RefrecarTabla();
+                OcultarCarga();
             }).fail(function() {
                 Swal.fire({
                     position: 'center',
@@ -329,6 +304,7 @@
                     showConfirmButton: false,
                     timer: 3000
                 });
+                OcultarCarga();
             })
         }
     });
@@ -337,10 +313,9 @@
     // ****+ ESTA ELIMINACION SE HACE LOGICA*****
 
     function Eliminar(id) {
-        console.log(id);
         Swal.fire({
             title: 'Eliminar?',
-            text: "La persona sera eliminada!",
+            text: "El vehiculo sera eliminado!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -351,13 +326,12 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '<?php echo RUTA_URL ?>/Personal/EliminarPersona',
+                    url: '<?php echo RUTA_URL ?>/Vehiculo/EliminarVehiculo',
                     type: 'POST',
                     data: {
                         id: id
                     }
                 }).done(function(resp) {
-                    console.log(resp);
                     RefrecarTabla();
                     Swal.fire(
                         'Eliminado!',
@@ -369,6 +343,38 @@
         })
     }
 
+    // Evento Busqueda
+    $('#buscador').keyup(function() {
+        var id = $(this).val();
+        var DatosNuevos = "";
+        var SinDatos = "";
+        console.log(id);
+        $.ajax({
+            url: '<?php echo RUTA_URL ?>/Vehiculo/SeleccionarVehiculoBuscar',
+            type: 'POST',
+            data: {
+                id: id
+            }
+        }).done(function(resp) {
+            var data = JSON.parse(resp);
+            var count = 1;
+            if (data == "") {
+                console.log("no hay nada");
+                for (var i = 0; i < 1; i++) {
+                    SinDatos += "<tr>" + "<td colspan='8' class='text-center'>No hay datos!</td>" + "</tr>";
+                    $("#RefrescarTabla").html(SinDatos);
+                }
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    DatosNuevos += "<tr>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Marca + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td>" + data[i].TipoVehiculo + "</td>" + "<td>" + data[i].NumeroPuertas + "</td>" + "<td>" + data[i].Placa + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].Id + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].Id + ")'><i class='bi bi-trash'></i></button></div></td>" + "</tr>";
+                    $("#RefrescarTabla").html(DatosNuevos);
+                }
+            }
+        }).fail(function() {
+            console.log("PATINO!")
+        })
+    });
+
     function RefrecarTabla() {
         var DatosNuevos = "";
         $.ajax({
@@ -376,7 +382,6 @@
             type: 'POST',
             data: {}
         }).done(function(resp) {
-            console.log(resp);
             var data = JSON.parse(resp);
             var count = 1;
             if (data) {

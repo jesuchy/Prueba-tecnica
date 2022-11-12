@@ -27,9 +27,16 @@ class Personal extends Controlador
 
     public function Api()
     {
-        $Personal = $this->PersonaModel->Personal();
-        var_dump($Personal);
+        $Personas = [
+            'Personas' => $this->PersonaModel->PersonalApi()
+        ];
+        $fileObjeto = json_decode(json_encode($Personas, JSON_FORCE_OBJECT));
+        echo "<pre>" . PHP_EOL;
+        var_dump($fileObjeto);
+        echo "</pre>" . PHP_EOL;
     }
+
+
 
     public function registrarPersona()
     {
@@ -51,6 +58,18 @@ class Personal extends Controlador
         $dato = $this->PersonaModel->SeleccionarPersonasId($id);
         echo json_encode($dato);
     }
+    public function SeleccionarPersonasDocumento()
+    {
+        $Documento = $_POST['Documento'];
+        $resp =  $this->PersonaModel->SeleccionarPersonasDocumento($Documento);
+        echo json_encode($resp);
+    }
+    public function SeleccionarPersonasBuscar()
+    {
+        $id = $_POST['id'];
+        $dato = $this->PersonaModel->SeleccionarPersonasBuscar($id);
+        echo json_encode($dato);
+    }
     public function EditarPersona()
     {
         $datos = [
@@ -69,7 +88,6 @@ class Personal extends Controlador
     public function EliminarPersona()
     {
         $id = $_POST['id'];
-        $dato = $this->PersonaModel->EliminarPersona($id);
-        echo json_encode($dato);
+        $this->PersonaModel->EliminarPersona($id);
     }
 }

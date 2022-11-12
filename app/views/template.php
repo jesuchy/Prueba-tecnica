@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?php echo RUTA_URL ?>/assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/index.css">
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/select.css">
-    <title>Farmacia</title>
+    <title><?php echo NAME_PROYECTO ?></title>
 
 </head>
 

@@ -15,10 +15,28 @@ class PersonaModel
         $resultados = $this->db->registros();
         return $resultados;
     }
+    public function PersonalApi()
+    {
+        $this->db->query("SELECT T1.Id AS IdPersona, T1.Nombres, T1.Apellidos, T1.FechaNacimiento, T1.Identificacion, T1.Profesion, T1.Casado, T1.IngresosMensuales, T1.estado, T2.Id AS IdVehiculo, T2.Placa, T2.Marca, T2.Modelo, T2.NumeroPuertas, T2.TipoVehiculo FROM tbl_persona T1 INNER JOIN tbl_vehiculo T2 ON T1.VeiculoActual = T2.Id WHERE T1.estado = 1");
+        $resultados = $this->db->registros();
+        return $resultados;
+    }
     public function SeleccionarPersonasId($id)
     {
         $this->db->query("SELECT T1.Id AS IdPersona, T1.Nombres, T1.Apellidos, T1.FechaNacimiento, T1.Identificacion, T1.Profesion, T1.Casado, T1.IngresosMensuales, T1.estado, T2.Id AS IdVehiculo, T2.Placa, T2.Marca, T2.Modelo, T2.NumeroPuertas, T2.TipoVehiculo FROM tbl_persona T1 INNER JOIN tbl_vehiculo T2 ON T1.VeiculoActual = T2.Id WHERE T1.estado = 1 AND T1.Id = '$id'");
         $resultados = $this->db->registro();
+        return $resultados;
+    }
+    public function SeleccionarPersonasDocumento($Documento)
+    {
+        $this->db->query("SELECT Id AS IdPersona FROM tbl_persona WHERE estado = 1 AND Identificacion = '$Documento'");
+        $resultados = $this->db->registro();
+        return $resultados;
+    }
+    public function SeleccionarPersonasBuscar($id)
+    {
+        $this->db->query("SELECT T1.Id AS IdPersona, T1.Nombres, T1.Apellidos, T1.FechaNacimiento, T1.Identificacion, T1.Profesion, T1.Casado, T1.IngresosMensuales, T1.estado, T2.Id AS IdVehiculo, T2.Placa, T2.Marca, T2.Modelo, T2.NumeroPuertas, T2.TipoVehiculo FROM tbl_persona T1 INNER JOIN tbl_vehiculo T2 ON T1.VeiculoActual = T2.Id WHERE T1.estado = 1 AND T1.Nombres LIKE '%$id%' OR T1.Apellidos LIKE '%$id%' OR T1.Identificacion LIKE '%$id%' OR T1.Profesion LIKE '%$id%' OR T1.VeiculoActual LIKE '%$id%' OR T1.IngresosMensuales LIKE '%$id%';");
+        $resultados = $this->db->registros();
         return $resultados;
     }
     

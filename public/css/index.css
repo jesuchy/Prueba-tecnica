@@ -27,7 +27,7 @@ body {
   line-height: 1.5;
   color: var(--gray_01);
   text-align: left;
-  background-color: var(--backgroup_02);
+  background-color: var(--backgroup_02) !important; 
   color: var(--color);
 }
 
@@ -288,4 +288,17 @@ footer {
 }
 .TemaOcuro .modal-content .modal-footer {
   border-top: 1px solid #15b5f30d;
+}
+
+
+/* ***************************++ */
+
+.EditCasado span, .EditVehiculo span{
+  width: 100%;
+}
+.EditCasado span input, .EditVehiculo span input{
+  cursor: pointer;
+}
+.EditCasado span label, .EditVehiculo span label{
+  color: #03e9f4;
 }
