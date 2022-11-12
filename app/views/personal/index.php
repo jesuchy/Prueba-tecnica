@@ -34,7 +34,7 @@
         <tbody id="RefrescarTabla">
           <?php $i = 0;
           foreach ($datos['Personal'] as $dato) : ?>
-            <tr>
+            <tr class="Oscuro">
               <th scope="row"><?php echo $i++ ?></th>
               <td><?php echo $dato->Nombres ?></td>
               <td><?php echo $dato->Apellidos ?></td>
@@ -663,7 +663,7 @@
         }
       } else {
         for (var i = 0; i < data.length; i++) {
-          DatosNuevos += "<tr>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Nombres + "</td>" + "<td>" + data[i].Apellidos + "</td>" + "<td>" + data[i].FechaNacimiento + "</td>" + "<td>" + data[i].Identificacion + "</td>" + "<td>" + data[i].Profesion + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].IdPersona + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].IdPersona + ")'><i class='bi bi-trash'></i></button><span class='d-inline-block' tabindex='0' data-bs-toggle='popover' data-bs-trigger='hover focus' data-bs-content='Historial de veiculos'><button type='button'><i class='bi bi-file-earmark-medical'></i></button></span></div></td>" + "</tr>";
+          DatosNuevos += "<tr class='Oscuro'>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Nombres + "</td>" + "<td>" + data[i].Apellidos + "</td>" + "<td>" + data[i].FechaNacimiento + "</td>" + "<td>" + data[i].Identificacion + "</td>" + "<td>" + data[i].Profesion + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].IdPersona + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].IdPersona + ")'><i class='bi bi-trash'></i></button><span class='d-inline-block' onclick='ModalHistorial(" + data[i].IdPersona + ")' tabindex='0' data-bs-toggle='popover' data-bs-trigger='hover focus' data-bs-content='Historial de veiculos'><button type='button'><i class='bi bi-file-earmark-medical'></i></button></span></div></td>" + "</tr>";
           $("#RefrescarTabla").html(DatosNuevos);
         }
       }
@@ -685,7 +685,7 @@
       var count = 1;
       if (data) {
         for (var i = 0; i < data.length; i++) {
-          DatosNuevos += "<tr>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Nombres + "</td>" + "<td>" + data[i].Apellidos + "</td>" + "<td>" + data[i].FechaNacimiento + "</td>" + "<td>" + data[i].Identificacion + "</td>" + "<td>" + data[i].Profesion + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].IdPersona + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].IdPersona + ")'><i class='bi bi-trash'></i></button><span class='d-inline-block' tabindex='0' data-bs-toggle='popover' data-bs-trigger='hover focus' data-bs-content='Historial de veiculos'><button type='button'><i class='bi bi-file-earmark-medical'></i></button></span></div></td>" + "</tr>";
+          DatosNuevos += "<tr class='Oscuro'>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Nombres + "</td>" + "<td>" + data[i].Apellidos + "</td>" + "<td>" + data[i].FechaNacimiento + "</td>" + "<td>" + data[i].Identificacion + "</td>" + "<td>" + data[i].Profesion + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].IdPersona + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].IdPersona + ")'><i class='bi bi-trash'></i></button><span class='d-inline-block' onclick='ModalHistorial(" + data[i].IdPersona + ")' tabindex='0' data-bs-toggle='popover' data-bs-trigger='hover focus' data-bs-content='Historial de veiculos'><button type='button'><i class='bi bi-file-earmark-medical'></i></button></span></div></td>" + "</tr>";
           $("#RefrescarTabla").html(DatosNuevos);
         }
       }

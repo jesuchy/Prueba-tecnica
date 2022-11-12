@@ -33,7 +33,7 @@
                 <tbody id="RefrescarTabla">
                     <?php $i = 0;
                     foreach ($datos['Vehiculo'] as $dato) : ?>
-                        <tr>
+                        <tr class='Oscuro'>
                             <th scope="row"><?php echo $i++ ?></th>
                             <td><?php echo $dato->Marca ?></td>
                             <td><?php echo $dato->Modelo ?></td>
@@ -366,7 +366,7 @@
                 }
             } else {
                 for (var i = 0; i < data.length; i++) {
-                    DatosNuevos += "<tr>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Marca + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td>" + data[i].TipoVehiculo + "</td>" + "<td>" + data[i].NumeroPuertas + "</td>" + "<td>" + data[i].Placa + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].Id + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].Id + ")'><i class='bi bi-trash'></i></button></div></td>" + "</tr>";
+                    DatosNuevos += "<tr class='Oscuro'>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Marca + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td>" + data[i].TipoVehiculo + "</td>" + "<td>" + data[i].NumeroPuertas + "</td>" + "<td>" + data[i].Placa + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].Id + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].Id + ")'><i class='bi bi-trash'></i></button></div></td>" + "</tr>";
                     $("#RefrescarTabla").html(DatosNuevos);
                 }
             }
@@ -386,7 +386,7 @@
             var count = 1;
             if (data) {
                 for (var i = 0; i < data.length; i++) {
-                    DatosNuevos += "<tr>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Marca + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td>" + data[i].TipoVehiculo + "</td>" + "<td>" + data[i].NumeroPuertas + "</td>" + "<td>" + data[i].Placa + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].Id + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].Id + ")'><i class='bi bi-trash'></i></button></div></td>" + "</tr>";
+                    DatosNuevos += "<tr class='Oscuro'>" + "<td>" + count++ + "</td>" + "<td>" + data[i].Marca + "</td>" + "<td>" + data[i].Modelo + "</td>" + "<td>" + data[i].TipoVehiculo + "</td>" + "<td>" + data[i].NumeroPuertas + "</td>" + "<td>" + data[i].Placa + "</td>" + "<td><div class='CajaBotones'><button onclick='ModalEditar(" + data[i].Id + ")'><i class='bi bi-pencil'></i></button><button onclick='Eliminar(" + data[i].Id + ")'><i class='bi bi-trash'></i></button></div></td>" + "</tr>";
                     $("#RefrescarTabla").html(DatosNuevos);
                 }
             }
