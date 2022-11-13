@@ -10,6 +10,9 @@
         <div class="table-responsive">
             <div class="Nab">
                 <div class="Agragar Boton">
+                    <a href="<?php echo RUTA_URL ?>/Home/Index">
+                        <button class="raise"><i class="bi bi-house"></i></button>
+                    </a>
                     <button id="BtnAgregar" class="raise">Agregar</button>
                 </div>
                 <div class="ContenedorInput">
@@ -165,7 +168,7 @@
     // Click de envio, para el regitro de persona 
 
     $("#BtnRegistrar").click(function() {
-        
+
         var Marca = $('#Marca_01').val();
         var Modelo = $('#Modelo_01').val();
         var TipoVehiculo = $('#TipoVehiculo_01').val();
@@ -225,12 +228,12 @@
     // Boton GLobal de Cargar 
     $(".Cargando").hide();
 
-    function MostrarCarga(){
+    function MostrarCarga() {
         $(".Cargando").show();
         $(".Submit").hide();
     }
 
-    function OcultarCarga(){
+    function OcultarCarga() {
         $(".Cargando").hide();
         $(".Submit").show();
     }

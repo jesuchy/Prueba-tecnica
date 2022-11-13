@@ -10,6 +10,9 @@
     <div class="table-responsive">
       <div class="Nab">
         <div class="Agragar Boton">
+          <a href="<?php echo RUTA_URL ?>/Home/Index">
+            <button class="raise"><i class="bi bi-house"></i></button>
+          </a>
           <button id="BtnAgregar" class="raise">Agregar</button>
         </div>
         <div class="ContenedorInput">
