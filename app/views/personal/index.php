@@ -324,7 +324,6 @@
         id: id
       }
     }).done(function(resp) {
-      console.log(data);
       var data = JSON.parse(resp);
       var count = 1;
       for (var i = 0; i < data.length; i++) {
@@ -628,7 +627,6 @@
             id: id
           }
         }).done(function(resp) {
-          console.log(resp);
           RefrecarTabla();
           Swal.fire(
             'Eliminado!',
@@ -645,7 +643,6 @@
     var id = $(this).val();
     var DatosNuevos = "";
     var SinDatos = "";
-    console.log(id);
     $.ajax({
       url: '<?php echo RUTA_URL ?>/Personal/SeleccionarPersonasBuscar',
       type: 'POST',
@@ -656,7 +653,6 @@
       var data = JSON.parse(resp);
       var count = 1;
       if (data == "") {
-        console.log("no hay nada");
         for (var i = 0; i < 1; i++) {
           SinDatos += "<tr>" + "<td colspan='8' class='text-center'>No hay datos!</td>" + "</tr>";
           $("#RefrescarTabla").html(SinDatos);
